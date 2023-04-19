@@ -1,0 +1,66 @@
+<div *ngIf="!estFini">
+  <div *ngIf="categorieChoisi != 2">
+    <ng-container *ngIf="estSoumis">
+      <mat-spinner></mat-spinner>
+    </ng-container>
+
+    <mat-card *ngIf="!loading" style="text-align: center">
+      <mat-card-title>La Question  {{ question.id_question }} :</mat-card-title>
+      <mat-card-content>
+        {{ question.libelle }}
+      </mat-card-content>
+    </mat-card>
+
+    <div *ngIf="!estSoumis">
+      <div *ngFor="let r of reponses">
+        <label>{{r.libelle}}</label>
+        <input  type="checkbox" name={{r.id_reponse}} id="" class="checkbox" value={{r.libelle}} (click)="selectOk()">
+      </div>
+      <button (click)="submitCheckbox()">Envoyer !</button>
+
+    </div>
+  </div>
+
+
+
+   <!-- Mettre un affichage différent pour sel et poivre :  -->
+
+  <div *ngIf="categorieChoisi == 2">
+    <ng-container *ngIf="estSoumis">
+      <mat-spinner></mat-spinner>
+    </ng-container>
+
+    <mat-card *ngIf="!loading" style="text-align: center">
+      <mat-card-title>La Question  {{ numQuestion }} :</mat-card-title>
+      <mat-card-content>
+        {{ question.libelle }}
+      </mat-card-content>
+    </mat-card>
+    <h1><app-decompte [tempsTime]="nbSecondesEntreQuestion" [question]="numQuestion"></app-decompte></h1>
+    <form *ngIf="!estSoumis"
+          [formGroup]="repForm"
+          (ngSubmit)="submitBook()">
+      <label *ngFor="let r of reponses">
+        <input
+              type="radio"
+              value={{r.id_reponse}}
+              formControlName="title">
+            {{r.libelle}}
+      </label>
+
+
+      <button type="submit">Envoyer ! </button>
+
+    </form>
+
+  </div>
+</div>
+
+<div *ngIf="estFini">
+  <app-victoire [score]="score"></app-victoire>
+
+</div>
+
+
+
+

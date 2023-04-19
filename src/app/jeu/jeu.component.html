@@ -1,0 +1,65 @@
+
+<main>
+  <section>
+    <h1 class="dashboard_title">Choix du<br />mode de jeu</h1>
+    <div *ngIf="!estTrie">
+      <ul class="dashboard_grid">
+        <li class="grid_elt"><a class="elt_cat" (click)="triSelect(2)">Sel et Poivre</a></li>
+        <li class="grid_elt"><a class="elt_cat" (click)="triSelect(1)">Nuggets</a></li>
+        <li class="grid_elt"><a class="elt_cat" (click)="triSelect(3)">L'addition</a></li>
+      </ul>
+    </div>
+    <img
+      src="../../assets/images/Group 39.png"
+      alt="burger illustration"
+      class="imgBurger"
+    />
+    <img
+      src="../../assets/images/soda-svgrepo-com 1.png"
+      alt="soda illustration"
+      class="imgSoda"
+    />
+  </section>
+
+  <section class="choiceTheme" *ngIf="estTrie && !paramPartie">
+    <form class="choiceTheme_content" [formGroup]="paramPartieValeur" (ngSubmit)="triSelectBis()">
+
+      <div *ngFor="let t of listeThemeSelect" class="content_elt">
+        <input type="radio" value={{t.id_theme}} formControlName="theme" id={{t.id_theme}} name="themeBtn"/>
+        <label for={{t.id_theme}}><span>{{t.libelle}}</span></label>
+      </div>
+
+      <button type="submit" class="submitTheme">
+        <span>Envoyer !</span>
+      </button>
+    </form>
+  </section>
+
+
+
+<!--
+
+  <div *ngIf="estTrie && !paramPartie">
+    <form
+        [formGroup]="paramPartieValeur"
+        (ngSubmit)="triSelectBis()">
+    <div *ngFor="let t of listeThemeSelect">
+      <label>{{t.libelle}}</label>
+      <input
+            type="radio"
+            value={{t.id_theme}}
+            formControlName="theme">
+
+    </div>
+    <button type="submit">Envoyer ! </button>
+
+    </form>
+  </div>
+
+-->
+
+
+
+
+  <app-jouer *ngIf="estTrie && paramPartie" [tabQ]="tabQuestionsLive" [categorie]="categorie"></app-jouer>
+</main>

@@ -1,0 +1,6 @@
+<h1>Choix de l'équipe</h1>
+<form [formGroup]='form' *ngIf="load" (ngSubmit)="onSubmit()">
+  <label>Mayo</label><input type="radio" formControlName="equipe" value="Mayo" >
+  <label>Ketchup</label><input type="radio" formControlName="equipe" value="Ketchup">
+  <button type="submit">Valider</button>
+</form>

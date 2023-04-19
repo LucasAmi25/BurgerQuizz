@@ -1,0 +1,17 @@
+<ng-container *ngIf="loading">
+  <mat-spinner></mat-spinner>
+</ng-container>
+
+<mat-card *ngIf="!loading" style="text-align: center">
+  <mat-card-title>La Question  {{ question.id_question }} :</mat-card-title>
+  <mat-card-content>
+    {{ question.libelle }}
+  </mat-card-content>
+</mat-card>
+
+<mat-grid-list cols="2" rowHeight="2:1" *ngIf="!loading">
+  <mat-grid-tile
+    *ngFor="let reponse of reponses">
+    <app-reponses [reponse]="reponse"></app-reponses>
+  </mat-grid-tile>
+</mat-grid-list>

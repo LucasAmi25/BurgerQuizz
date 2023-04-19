@@ -1,0 +1,23 @@
+.notFound {
+  height: 100%;
+  width: 100%;
+  padding-top: 10%;
+}
+
+.notFound, .notFound * {
+  font-size: 72px;
+  font-weight: bold;
+  text-align: center;
+}
+
+.notFound h1 {
+  position: relative;
+  margin: 0.25em auto;
+  font-family: var(--main-font);
+  font-size: clamp(62px, 10vw, 96px);
+  line-height: clamp(64px, 10vw, 86px);
+  color: white;
+  max-width: 700px;
+  text-align: center;
+  z-index: 2;
+}
